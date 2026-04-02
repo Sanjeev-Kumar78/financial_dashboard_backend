@@ -1,9 +1,6 @@
 {
-  "buildCommand": "pip install -r requirements.txt",
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "installCommand": "pip install -r requirements.txt",
-  "outputDirectory": ".",
-  "framework": "fastapi",
-  "python": {
-    "version": "3.11"
-  }
+  "buildCommand": null,
+  "framework": "fastapi"
 }

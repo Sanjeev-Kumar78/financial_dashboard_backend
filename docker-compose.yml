@@ -1,0 +1,33 @@
+version: "3.9"
+
+services:
+  api:
+    build: .
+    container_name: finance_api
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      # Automatically routes to the postgres service listed below within the docker network
+      - DATABASE_URL=postgresql://financeuser:financepass@postgres:5432/financedb
+      # Can be overridden by local env, defaulting to a basic key for immediate spinup
+      - SECRET_KEY=${SECRET_KEY:-development_only_secret_key_please_change_in_production_12345}
+    depends_on:
+      postgres:
+        condition: service_started
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: finance_postgres
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: financeuser
+      POSTGRES_PASSWORD: financepass
+      POSTGRES_DB: financedb
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:

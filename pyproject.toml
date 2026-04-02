@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "finance-backend"
+version = "1.0.0"
+description = "Role-based Finance Dashboard API"
+authors = ["Admin <admin@example.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "*"
+uvicorn = {extras = ["standard"], version = "*"}
+sqlalchemy = "^2.0"
+psycopg2-binary = "*"
+alembic = "*"
+pydantic-settings = "*"
+python-jose = {extras = ["cryptography"], version = "*"}
+passlib = "*"
+argon2-cffi = "*"
+email-validator = "*"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "*"
+httpx = "*"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -4,7 +4,7 @@ from alembic import op
 import sqlalchemy as sa
 
 
-revision = "002_sync_transactions_notes_soft_delete"
+revision = "002_txn_notes_soft_delete"
 down_revision = "001_initial_schema"
 branch_labels = None
 depends_on = None

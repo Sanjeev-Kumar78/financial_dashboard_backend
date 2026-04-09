@@ -16,6 +16,8 @@ A highly secure, production-ready financial records management backend engineere
 *   **True Multiprocessing (Gunicorn-Ready):** 100% server stateless. Combines cryptographically verified JWT bearer tokens with robust SQLAlchemy DB connection pooling so multiple workers can scale horizontally without sync drift.
 
 ---
+> [!TIP]
+> **Before testing, you must read the [Request/Response Examples](#requestresponse-examples).**
 
 ### 1. Launch with Docker Compose (Full Stack)
 
@@ -117,6 +119,11 @@ Browse to **http://localhost:8000/docs** for interactive Swagger UI.
 ---
 
 ## Request/Response Examples
+> [!IMPORTANT]
+> Test credentials already created:
+> john@example.com : viewer
+> john1@example.com : admin
+> john2@example.com : analyst
 
 ### Register
 ```json
@@ -182,8 +189,7 @@ Browse to **http://localhost:8000/docs** for interactive Swagger UI.
 
 New users get the `viewer` role by default. To create an admin for testing:
 
-1. Register via `POST /auth/register`
-2. Promote in the DB:
+1. Promote in the DB:
    ```sql
    UPDATE users SET role = 'admin' WHERE email = 'your@email.com';
    ```
